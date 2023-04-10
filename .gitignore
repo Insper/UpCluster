@@ -1,0 +1,5 @@
+env/**
+site/**
+*pyc
+
+.ipynb_checkpoints/
