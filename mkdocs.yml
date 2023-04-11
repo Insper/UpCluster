@@ -49,7 +49,7 @@ extra_css:
     - equipe.css
     
 nav:
-    - UpCluster.md
+    - index.md
     - Building a cluster:
       - building-cluster/infrastructure/index.md      
     - Aplications:
