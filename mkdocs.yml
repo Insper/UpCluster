@@ -49,6 +49,7 @@ extra_css:
     - equipe.css
     
 nav:
+    - UpCluster-Insper:
     - Building a cluster:
       - building-cluster/infrastructure/index.md      
     - Aplications:
