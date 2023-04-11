@@ -1,10 +1,16 @@
-site_name: UpCluster - Insper
+site_name: UpCluster
 theme:
   name: active-handout-theme
   # locale: pt_BR
 
 docs_dir: content
 site_dir: docs
+
+site_url: https://insper.github.io/UpCluster/
+repo_name: "UpCluster"
+repo_url: https://github.com/insper/UpCluster/
+edit_uri: edit/main/content/
+
 
 plugins:
   - active-handout
