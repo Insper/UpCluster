@@ -41,4 +41,11 @@ markdown_extensions:
 
 extra_css:
     - equipe.css
+    
+nav:
+    - UpCluster.md
+    - Building a cluster:
+      - building-cluster/infrastructure/index.md      
+    - Aplications:
+      - Aplications/index.md
 

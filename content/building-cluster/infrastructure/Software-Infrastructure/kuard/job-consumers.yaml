@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    app: message-queue
+    component: consumer
+    chapter: jobs
+  name: consumers
+  namespace: exoplanets
+spec:
+  parallelism: 48
+  completions: 500
+  template:
+    metadata:
+      labels:
+        app: message-queue
+        component: consumer
+        chapter: jobs
+    spec:
+      containers:
+      - name: worker
+        image: "tiagodemay/consumers:1.0"
+        resources:
+          requests:
+#            memory: "64Mi"
+            cpu: "250m"
+          limits:
+#            memory: "128Mi"
+            cpu: "500m"
+        imagePullPolicy: Always
+      restartPolicy: OnFailure
+      
