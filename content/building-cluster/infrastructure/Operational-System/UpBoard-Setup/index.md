@@ -9,7 +9,7 @@
 
 </aside>
 
-## Sistem Operational Installation
+## System Operational Installation
 
 1. Download Ubuntu 20.04.4 ISO from the Ubuntu download page, we used server edition
 
