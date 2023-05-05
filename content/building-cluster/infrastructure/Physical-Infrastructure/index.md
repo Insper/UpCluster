@@ -2,6 +2,7 @@
 
 # Physical Infrastructure
 <br>
+
 ![Cluster Perspective](imgs/cluster_rack%20_isometric.png){width=300}
 <br>
 The cluster structure was made in a rack format containing 24 drawers. Since the project was based on the DevKit Upboards, the design of the cluster started through the concept of a drawer that could hold the board model, giving access for connecting cables (ethernet and USB cable) and airflow through specific cutouts on its acrylic body.
