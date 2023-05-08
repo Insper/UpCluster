@@ -4,38 +4,42 @@
 <br>
 
 ![Cluster Perspective](imgs/cluster_rack%20_isometric.png){width=300}
+
 <br>
 The cluster structure was made in a rack format containing 24 drawers. Since the project was based on the DevKit Upboards, the design of the cluster started through the concept of a drawer that could hold the board model, giving access for connecting cables (ethernet and USB cable) and airflow through specific cutouts on its acrylic body.
 
 
 ![Drawer and UPBoard Top View](imgs/upboard_drawer_bolt_holes.png)
 <figcaption>Screw connectors</figcaption>
+
 <br>
 
 ![Drawer cutouts](imgs/upboard_drawer_cutouts.png)
 <figcaption>Cutouts for cable connections and air flow</figcaption>
+
 <br>
 
 The drawers are organized in two stacks of 12 units in a symmetrical arrangement where the stacks are opposite each other. Between the drawers it is possible to identify a space destined to contain the cluster network switch and behind this set an area was provided for storing the system cables that is enclosed by a set of two doors.
 
-<br>
 ![Cluster front and back view](imgs/cluster_rack%20_front_and_back.png)
+<figcaption>Drawers positions and doors for the cables enclosure</figcaption>
 
 <br>
+
 Above this structure, a specific niche was designed to store the router (*router name*) that is also enclosed by another door at the rear.
 
-<br>
 ![Router niche](imgs/router_niche.png)
+<figcaption>Niche for the router</figcaption>
 
-<br>
 ## Materials
 
 The whole rack is made of 3mm thickness acrylic sheet. The choice of material is due to the large amount of leftovers and scraps available for the project. It is worth noting that this material comes from old protections for service areas used during the 2020 COVID-19 pandemic.
 
-<br>
 ![Acrylic Scraps](imgs/acrylic_scraps.png){width=700}
+<figcaption>Acrylic scraps from protections for service areas</figcaption>
 
 <br>
+
 After vaccination of a large part of the population and a drop in mortality due to the virus, these acrylic protections were removed and a large amount of this material was found accessible and available for reuse.
 
 ## Rack Building Process
@@ -53,11 +57,21 @@ Below is the process used in each step.
 
 The CAD (computer-aided design) software used to design the rack was the Autodesk Fusion 360. Considering that the material avaiable for the project was the 3mm thickness acrylic sheets mentioned before, it was a concern to create a design that contemplated its physical characteristics and properties. 
 
-*image combining skecth profile and bodies*
+![Profile Represenation](imgs/sides_profiles.png)
+<figcaption>2D projections from the rack parts</figcaption>
 
-The designing concept were based on 2D profiles of each component with the exception of the piece that forms the front of the drawers. The thermoplastic properties of acrylic were harnessed to create the L-shaped part. This same part when is assembled with the rest of the rack this smooth look on the sides of its body is created, giving it a building construction look.
+<br>
 
-*image combining L-shape drawer part and a view of the rack with one drawer out*
+The designing concept were based on 2D profiles of each component with the exception of the frontal piece of the drawer. The thermoplastic properties of acrylic were harnessed to create the L-shaped part. This same part, when is assembled with the rest of the rack, gives to the structure a look similar to a building construction.
+
+
+![L-shaped Part](imgs/L-shaped_part.png)
+<figcaption>Drawer L-shaped part</figcaption>
+
+<br>
+
+![L-shaped Projection](imgs/L-shaped_2d_profile.png)
+<figcaption>2D projection from the L-shaped part</figcaption>
 
 ### Laser Cutting Parts
 
