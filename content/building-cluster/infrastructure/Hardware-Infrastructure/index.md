@@ -1,4 +1,4 @@
-# __Hardware__
+# __Hardware Infrastructure__
 
 ## __Hardware used by the project__
 
