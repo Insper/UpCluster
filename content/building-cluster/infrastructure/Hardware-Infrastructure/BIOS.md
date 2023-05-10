@@ -1,11 +1,11 @@
 # BIOS
 
 ## What's it?
- [BIOS](https://en.wikipedia.org/wiki/BIOS, "BIOS Description") in a simple way is what do tasks when the computer starts, BIOS can recognize the installed hardware, verify connected devices and inicialize an Operating System.
+ [BIOS](https://en.wikipedia.org/wiki/BIOS, "BIOS Description") BIOS is a firmware that initializes and configures hardware components of a computer system during the boot process. It also provides basic functions and services that the operating system and other software can use to interact with the hardware. Users can modify BIOS settings through a configuration interface. 
 
 ## UpBoard Network Stack's problem
 
-Our UpBoard model has a not updated BIOS version, and updating is necessary for using the Network Stack function, which provides the cluster communication.
+To utilize the cluster communication feature, it is necessary to update the BIOS version of our UpBoard model, as the current version is not up to date. Updating the BIOS will enable the Network Stack function and ensure its proper functioning.
 
 ### Network Stack
 
@@ -16,13 +16,13 @@ Our UpBoard model has a not updated BIOS version, and updating is necessary for 
 For starting a process is necessary find a UEFI BIOS version compartible with our UpBoard model. After trying some UEFI BIOS versions and researching on internet, the only version that runned  correctly was the UPC1DM11 [UPC1DM11](https://downloads.up-community.org/download/up-board-uefi-bios-upc1dm11/), which is a version for the UpBoard model described in the project and has Network Stack functions.
 
 ## How to:
-You can see below step by step how to update the BIOS and some installations advices.
+It's possible to see how to update the BIOS and some installations advices down below.
 
-> :warning:
-> The mentioned BIOS version (UPC1DM11) is compatible with two UpBoard versions, UpBoard with 2GB RAM and 4GB RAM.
+ :warning:
+ The mentioned BIOS version (UPC1DM11) is compatible with two UpBoard versions, UpBoard with 2GB RAM and 4GB RAM.
 
-> :warning:
-> You need to remove all USB devices, but the USB device that has the BIOS files. 
+ :warning:
+ You need to remove all USB devices, but the USB device that has the BIOS files. 
 
 
 ### What we are going to do
