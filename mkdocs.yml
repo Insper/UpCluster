@@ -52,7 +52,14 @@ extra_css:
     
 nav:
     - Building a cluster:
-      - building-cluster/infrastructure/index.md      
+      - building-cluster/infrastructure/index.md
+        - Hardware  Infrastructure:
+          - building-cluster/infrastructure/Hardware-Infrastructure/index.md
+          - building-cluster/infrastructure/Hardware-Infrastructure/BIOS.md
+        - Physical Infrastructure: 
+          - building-cluster/infrastructure/Physical-Infrastructure/index.md
+        - Operational System:
+          - building-cluster/Operational-System/UpBoard-Setup/index.md
     - Aplications:
       - Aplications/index.md
 
