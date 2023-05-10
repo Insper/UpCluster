@@ -221,5 +221,3 @@ In this section is possible to download and work on the same files presented in 
 
 Click [here](https://insper-my.sharepoint.com/:f:/g/personal/leonardonr1_insper_edu_br/Eh0B72-dcSVIvPGwLCOnR-oB-YIDtvz6Izd2h586OY8hQQ?e=SPmWfI)
 to get access to the files.
-
-![Under Construction](https://www.imagensanimadas.com/data/media/695/em-construcao-imagem-animada-0035.gif)  
