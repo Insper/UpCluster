@@ -1,5 +1,3 @@
-# __Hardware Infrastructure__
-
 ## __Hardware used by the project__
 
 The hardware used by our cluster is:
@@ -30,16 +28,12 @@ The [UpBoard](https://up-board.org/up/specifications, "UpBoard Specifications") 
 - Power Supply – 5V/3A via 5.5/2.1mm jack
 - Dimensions – 85.60 x 56.50 mm
  
-<br>
-<div><img src="images/Intel-RealSense-Robotic-Development-Kit.webp" /></div>
-<div>Intel RealSense Robotic Development Kit Features Atom x5 UP Board, Realsense R200 Depth Camera. 2016.<a href="https://www.cnx-software.com/2016/04/14/intel-realsense-robotic-development-kit-features-atom-x5-up-board-realsense-r200-depth-camera/"> <br> cnx-software</a>.</div>
+![Intel RealSense Robotic Development Kit](images/Intel-RealSense-Robotic-Development-Kit.webp)](https://www.cnx-software.com/2016/04/14/intel-realsense-robotic-development-kit-features-atom-x5-up-board-realsense-r200-depth-camera/)
+Image source: [cnx-software](https://www.cnx-software.com/2016/04/14/intel-realsense-robotic-development-kit-features-atom-x5-up-board-realsense-r200-depth-camera/) (2016)
 
-<br>
-<br>
 
 ## Why we chose UpBoards?
-We chose this UpBoard model thinking about reutilizing some parts from our store (UpBoards) that wasn't more being used in the instituition. Some time ago, UpBoards were used in Robotics, but went replaced by RaspBerry Pi 4.
-The chosen Upboard has a x86 architecture, which can provide many resources. The UpBoard is compatible with many softwares that requires necessary a x86 architecture.
+Our selection of the UpBoard model was based on our intention to repurpose unused UpBoards from our inventory. These boards had previously been employed in robotics but were supplanted by the Raspberry Pi 4. Our chosen UpBoard boasts an x86 architecture, offering numerous resources, and is compatible with a wide range of software that necessitates this architecture.
 
 ## Applications
 
@@ -48,5 +42,4 @@ We can use UpBoards for many different purposes, in the list below you can see t
 - Exoplanet Hunter
 - Distributed Computing (MPI)
 - Black Hole Simulator
-
 

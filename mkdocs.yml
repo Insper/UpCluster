@@ -44,9 +44,11 @@ markdown_extensions:
   - pymdownx.snippets:
       base_path: content
       check_paths: true
+  - md_in_html
 
 extra_css:
     - equipe.css
+    - stylesheet.css
     
 nav:
     - Building a cluster:
