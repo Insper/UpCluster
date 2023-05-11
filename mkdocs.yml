@@ -59,7 +59,8 @@ nav:
       - "Physical Infrastructure": 
         - building-cluster/infrastructure/Physical-Infrastructure/index.md
       - "Operational System":
-        - building-cluster/Operational-System/UpBoard-Setup/index.md
+        - building-cluster/infrastructure/Operational-System/index.md
+        - building-cluster/infrastructure/Operational-System/UpBoard-Setup/index.md
     - Aplications:
       - Aplications/index.md
 
