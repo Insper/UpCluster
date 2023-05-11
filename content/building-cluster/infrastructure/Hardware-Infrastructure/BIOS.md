@@ -1,7 +1,7 @@
 # BIOS
 
 ## What's it?
- [BIOS](https://en.wikipedia.org/wiki/BIOS, "BIOS Description") BIOS is a firmware that initializes and configures hardware components of a computer system during the boot process. It also provides basic functions and services that the operating system and other software can use to interact with the hardware. Users can modify BIOS settings through a configuration interface. 
+ [BIOS](https://en.wikipedia.org/wiki/BIOS, "BIOS Description") is a firmware that initializes and configures hardware components of a computer system during the boot process. It also provides basic functions and services that the operating system and other software can use to interact with the hardware. Users can modify BIOS settings through a configuration interface. 
 
 ## UpBoard Network Stack's problem
 
@@ -34,32 +34,22 @@ It's possible to see how to update the BIOS and some installations advices down 
 1. Entering into a directory in pendrive which has the BIOS file and update the batch.
 1. Rebooting the system.
 
-<details open><summary>Step by step</summary><blockquote>
+Step by step
 
 1. Installing BIOS into USB stick
     - After the download, make sure to unzip in a way that all files can be seen, as you can see below:
-
-<br>
-<div><img src="images/bios1.jpg" /></div>
-<div>Own authorship, 2022.</div>   
-<br>
+![BIOS image](images/bios1.jpg)
 
 2. Updating System BIOS
     - Starts UpBoard after connecting all necessary devices.
     - Wait for displaying it:
+![BIOS image](images/bios2.jpg)
 
-<br>
-<div><img src="images/bios2.jpg" /></div>
-<div>Own authorship, 2022.</div>   
-<br>
 Search for the USB stick device.
 - In this case the device's label is fs1
     - Open the device's content file and observates, and compare with the image below.
 
-<br>
-<div><img src="images/bios3.jpg" /></div>
-<div>Own authorship, 2022.</div>   
-<br>
+![BIOS image](images/bios3.jpg)
 
 - Run the file GO.nsh by writing.
 
@@ -70,11 +60,7 @@ fs1:\> GO.nsh
     
 and click the button  <kbd>Enter</kbd> .
 
-<br>
-<div><img src="images/bios4.jpg" /></div>
-<div>Own authorship, 2022.</div>   
-<br>
+![BIOS image](images/bios4.jpg)
 
 - BIOS will start updating, at the end, the UpBoard will restart by itself. After rebooting you can extract the USB stick.
 
-</blockquote></details>
