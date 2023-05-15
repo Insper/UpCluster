@@ -1,0 +1,32 @@
+name: MPI Build and Run
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up MPI
+        uses: mpi-forall/mpi-action@v2
+
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Build MPI code
+        run: |
+          mpicc -o pi pi.cpp
+
+      - name: Run MPI code
+        id: mpi-run
+        run: |
+          mpirun -np 4 ./pi > output.txt
+
+      - name: Display output
+        run: cat output.txt
