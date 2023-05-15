@@ -26,7 +26,6 @@ jobs:
       - name: Run MPI code
         id: mpi-run
         run: |
-          mpirun -np 4 ./pi > output.txt
-
+          mpirun --oversubscribe -np 4 ./pi > output.txt
       - name: Display output
         run: cat output.txt
