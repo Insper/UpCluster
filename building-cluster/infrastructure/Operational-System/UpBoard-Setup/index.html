@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>UpBoard Configuration - UpCluster</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../../../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../../../equipe.css"><link rel="stylesheet" href="../../../../stylesheet.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../../../.."
+           title="UpCluster"
+           class="ah-logo"
+           aria-label="UpCluster">
+          UpCluster
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Building a cluster</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../">Technical detail</a>
+    </li>
+  
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Hardware  Infrastructure</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../Hardware-Infrastructure/">Hardware used by the project</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../Hardware-Infrastructure/BIOS/">BIOS</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Physical Infrastructure</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../Physical-Infrastructure/">Physical Infrastructure</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+        
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Operational System</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../">Operational System</a>
+    </li>
+  
+
+      
+        
+  
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">UpBoard Configuration</span>
+      <ul>
+        
+          <li class="ah-toc-item">
+            <a href="#upboard-configuration">UpBoard Configuration</a>
+          </li>
+          
+          <li class="ah-toc-item">
+            <a href="#system-operational-installation">System Operational Installation</a>
+          </li>
+          
+          <li class="ah-toc-item">
+            <a href="#setup-upboard-kernel">Setup UpBoard kernel</a>
+          </li>
+          
+          <li class="ah-toc-item">
+            <a href="#configuring-drivers">Configuring drivers</a>
+          </li>
+          
+          <li class="ah-toc-item">
+            <a href="#installing-rpigpio-library">Installing RPi.GPIO library</a>
+          </li>
+          
+        
+      </ul>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Aplications</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../../../Aplications/">Running on UpCluster</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Building a cluster</li>
+                  
+                
+                  
+                    <li>Operational System</li>
+                  
+                
+                <li>UpBoard Configuration</li>
+            </ul>
+            
+            
+          </div>
+          <section class="progress-section show">
+<h1 id="upboard-configuration">UpBoard Configuration</h1>
+<p><strong>Login ID: ubuntu</strong> </p>
+<p><strong>PASSWORD:turin</strong></p>
+<aside>
+⚠️ This instruction was tested on Upboard with Ubuntu 20.04
+
+</aside>
+
+<h2 id="system-operational-installation">System Operational Installation</h2>
+<ol>
+<li>Download Ubuntu 20.04.4 ISO from the Ubuntu download page, we used server edition</li>
+</ol>
+<p><a href="https://releases.ubuntu.com/20.04/ubuntu-20.04.5-live-server-amd64.iso"></a></p>
+<ol>
+<li>Burn the downloaded image on a USB stick. We suggest using etcher or rufus for doing that. You can download the suggested software from:</li>
+</ol>
+<p><a href="https://etcher.io/">https://etcher.io</a></p>
+<p><a href="https://rufus.ie/">https://rufus.ie</a></p>
+<ol>
+<li>Insert the USB installer disk in an empty USB port and proceed with a normal Ubuntu installation.</li>
+</ol>
+<h2 id="setup-upboard-kernel">Setup UpBoard kernel</h2>
+<p>To access the upboard gpios, we need to change the default kernel to UpBoard kernel.</p>
+<ol>
+<li>Add the upboard repository:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:up-division/5.4-upboard
+</code></pre></div>
+<ol>
+<li>Update the repository list</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</code></pre></div>
+<ol>
+<li>Remove all the generic installed kernel</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove<span class="w"> </span>--purge<span class="w"> </span>linux-*generic
+</code></pre></div>
+<ol>
+<li>Install the tested kernel:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>linux-generic-hwe-18.04-5.4-upboard
+</code></pre></div>
+<ol>
+<li>Install the updates:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>dist-upgrade<span class="w"> </span>-y
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>update-grub
+</code></pre></div>
+<ol>
+<li>Reboot the system</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>reboot
+</code></pre></div>
+<ol>
+<li>Test if all is done right:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>uname<span class="w"> </span>-a
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Linux<span class="w"> </span>upxtreme-UP-WHL01<span class="w"> </span><span class="m">5</span>.4.0-1-generic<span class="w"> </span><span class="c1">#2~upboard2-Ubuntu SMP Thu Jul 25 13:35:27 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</span>
+</code></pre></div>
+<h2 id="configuring-drivers">Configuring drivers</h2>
+<p>To be able to use the GPIO, PWM, SPI, I2C and UART functionality with a normal user</p>
+<ol>
+<li>Install the upboard-extras</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>upboard-extras
+</code></pre></div>
+<ol>
+<li>
+<p>Add the user that needs to access the HAT funcionality</p>
+<p>GPIO</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>gpio<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<p>LEDs</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>LEDS<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<p>SPI</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>SPI<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<p>I2C</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>i2c<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<p>UART</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>dialout<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+</li>
+<li>
+<p>Reboot the system to apply the permission changes</p>
+</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>reboot
+</code></pre></div>
+<h2 id="installing-rpigpio-library">Installing RPi.GPIO library</h2>
+<p>To have access to GPIO with python, install the RPi.GPIO lib for upboard</p>
+<ol>
+<li>This package provides a class to control the GPIO on a Raspberry Pi, ported
+to work on the UP board hardware, Download the GitHub</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-pip
+</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/emutex/RPi.GPIO.git
+</code></pre></div>
+<ol>
+<li>Install the package </li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>RPi.GPIO<span class="w"> </span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>python3<span class="w"> </span>setup.py<span class="w"> </span>install
+</code></pre></div>
+<ol>
+<li>Clone Blinkt repository</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/pimoroni/blinkt.git
+</code></pre></div>
+<ol>
+<li>Install the blinkt package </li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>blinkt
+</code></pre></div>
+<ol>
+<li>Run one example</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>python3<span class="w"> </span>/home/ubuntu/blinkt/examples/rainbow.py
+</code></pre></div>
+<ol>
+<li>Create a file to run like the example below:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>&gt;<span class="w"> </span>blink.sh
+</code></pre></div>
+<ol>
+<li>Open the file and paste the code:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>nano<span class="w"> </span>blink.sh
+</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="ch">#! /bin/bash</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>python3<span class="w"> </span>/home/ubuntu/blinkt/examples/rainbow.py<span class="w"> </span>
+</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>chmod<span class="w"> </span>a+x<span class="w"> </span>blink.sh
+</code></pre></div>
+<ol>
+<li>Create the file with this path:</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/lib/systemd/system/rainbow-leds.service
+</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1">#systemctl enable rainbow-leds.service</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="o">[</span>Unit<span class="o">]</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="nv">Description</span><span class="o">=</span>enableHotSpot
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nv">After</span><span class="o">=</span>network.target
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="o">[</span>Service<span class="o">]</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="nv">User</span><span class="o">=</span>root
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="nv">Type</span><span class="o">=</span>forking
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="nv">ExecStart</span><span class="o">=</span>/home/ubuntu/blink.sh
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="nv">StandardOutput</span><span class="o">=</span>journal
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="o">[</span>Install<span class="o">]</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>rainbow-leds.service
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>rainbow-leds.service
+</code></pre></div>
+<h3 id="references">References:</h3>
+<p><a href="https://github.com/up-board/up-community/wiki/Ubuntu_20.04">up-board/up-community</a></p>
+<p><a href="https://github.com/pimoroni/blinkt">pimoroni/blinkt</a></p>
+
+
+</section>
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../"
+               class="ah-prev"
+               title="Operational System">
+              <span class="nav-label">Previous</span>
+              <span class="nav-title">Operational System</span>
+            </a>
+          
+          
+            <a href="../../../../Aplications/"
+               class="ah-next"
+               title="Running on UpCluster">
+              <span class="nav-label">Next</span>
+              <span class="nav-title">Running on UpCluster</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      
+    
+  </body>
+</html>
