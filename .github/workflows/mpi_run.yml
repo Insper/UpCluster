@@ -21,7 +21,7 @@ jobs:
 
       - name: Build MPI code
         run: |
-          mpicc -o pi pi.cc
+          mpic++ pi.cc -o pi
 
       - name: Run MPI code
         id: mpi-run
