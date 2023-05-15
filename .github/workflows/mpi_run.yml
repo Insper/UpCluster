@@ -21,12 +21,12 @@ jobs:
 
       - name: Build MPI code
         run: |
-          mpicc -o cpp_files/pi cpp_files/pi.cpp
+          mpicc -o pi pi.cpp
 
       - name: Run MPI code
         id: mpi-run
         run: |
-          mpirun -np 4 .cpp_files//pi > cpp_files/output.txt
+          mpirun -np 4 ./pi > output.txt
 
       - name: Display output
-        run: cat cpp_files/output.txt
+        run: cat output.txt
