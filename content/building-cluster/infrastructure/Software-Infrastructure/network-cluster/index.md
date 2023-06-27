@@ -190,3 +190,7 @@ do
     ssh -o "StrictHostKeyChecking=no" "$USERNAME@$ip" "echo '$entry' | sudo tee -a /etc/hosts > /dev/null && echo 'Configuração adicionada em $node'"
 done
 ```
+
+
+
+end
