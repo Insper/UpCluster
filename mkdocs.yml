@@ -62,7 +62,7 @@ nav:
         - building-cluster/infrastructure/Operational-System/index.md
         - building-cluster/infrastructure/Operational-System/UpBoard-Setup/index.md
       - "Software Infrastructure":
-        - building-cluster/infrastructure/Software-Infrastructure/index.md 
+        - building-cluster/infrastructure/Software-Infrastructure/network-cluster/index.md
     - Aplications:
       - Aplications/index.md
 
