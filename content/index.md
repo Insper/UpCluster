@@ -7,7 +7,6 @@ The Insper laboratory technical team has built a low-cost cluster comprising of 
 
 
 !!! people "Team"
-    - ![Luciano Silva](imgs/Luciano.jpeg) **Luciano Silva** *Professor Researcher*
     - ![André Filipe](imgs/andre.jpeg) **André Filipe** *Professor Researcher*
     - ![Lícia Sales](imgs/Licia.jpeg) **Lícia Sales** *Robotics and AI Lab*
     - ![Tiago Demay](imgs/Demay.jpg) **Tiago Demay** *HPC and Network Lab*
