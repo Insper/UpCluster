@@ -11,4 +11,4 @@ The Insper laboratory technical team has built a low-cost cluster comprising of 
     - ![Lícia Sales](imgs/Licia.jpeg) **Lícia Sales** *Robotics and AI Lab*
     - ![Tiago Demay](imgs/Demay.jpg) **Tiago Demay** *HPC and Network Lab*
     - ![Leornado Nazário](imgs/Leonardo.jpeg) **Leornado Nazário** *FabLab*
-    - ![Daniel](imgs/Daniel.jpeg) **Daniel Pinto** *Agile Lab*
+    - ![Daniel](imgs/Daniel.jpeg) **Daniel Pinto** *Agile Lab*   
